@@ -15,10 +15,7 @@
     "react-robot": "^0.2.2",
     "react-scripts": "3.4.3",
     "react-spring": "8.0.27",
-    "robot3": "^0.2.19",
-    "styled-components": "5.2.1",
-    "xstate": "^4.23.1",
-    "xstate-react": "^0.1.1"
+    "styled-components": "5.2.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
