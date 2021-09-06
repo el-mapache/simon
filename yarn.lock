@@ -8541,7 +8541,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8843,15 +8843,6 @@ react@17.0.0:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-
-react@^16.4.0:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
@@ -9236,11 +9227,6 @@ robot-hooks@^0.3.6:
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/robot-hooks/-/robot-hooks-0.3.7.tgz#1f21aaeb2dd572acbe5af7cceac5c5a24020fc88"
   integrity sha512-mxKIa+GIKYgOjW9p7RzVtSNUStOOFF6qGUl38j3f8wCEfEP0QhkSQoTxz3LkiIDNOTP9XKSJhzhwz9umKX31yA==
-
-robot3@^0.2.19:
-  version "0.2.19"
-  resolved "https://registry.yarnpkg.com/robot3/-/robot3-0.2.19.tgz#11b132617fb88a2ea094278f4a3e79ce804aae55"
-  integrity sha512-g7wPLGqZhvr0HgPHjo7FlqnQ2odioxfmPZ3Y2xUQ/3BrNz8qcyIGZB3NYKbmQFhl/rr4dRipsUPsQgRsXQs9UQ==
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -11009,24 +10995,6 @@ xregexp@^4.3.0:
   integrity sha512-83y4aa8o8o4NZe+L+46wpa+F1cWR/wCGOWI3tzqUso0w3/KAvXy0+Di7Oe/cbNMixDR4Jmi7NEybWU6ps25Wkg==
   dependencies:
     "@babel/runtime-corejs3" "^7.12.1"
-
-xstate-react@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/xstate-react/-/xstate-react-0.1.1.tgz#6f29ce6ed2ea61e8f5565378f036e4208be30803"
-  integrity sha512-tvyScxhkh2AAp+kzybmnq/S1OCPzy8LpY0rP0KkKntCStHvFIBaUVBQNJlPHnbBHcHP/4nDvFxhZSZQYztxEXw==
-  dependencies:
-    react "^16.4.0"
-    xstate "^3.3.2"
-
-xstate@^3.3.2:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-3.3.3.tgz#64177cd4473d4c2424b3df7d2434d835404b09a9"
-  integrity sha512-p0ZYDPWxZZZRAJyD3jaGO9/MYioHuxZp6sjcLhPfBZHAprl4EDrZRGDqRVH9VvK8oa6Nrbpf+U5eNmn8KFwO3g==
-
-xstate@^4.23.1:
-  version "4.23.1"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.23.1.tgz#a85ce0ca4ad9737f1497e2da7a3abc6a5697fbcd"
-  integrity sha512-8ZoCe8d6wDSPfkep+GBgi+fKAdMyXcaizoNf5FKceEhlso4+9n1TeK6oviaDsXZ3Z5O8xKkJOxXPNuD4cA9LCw==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
