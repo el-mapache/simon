@@ -1,0 +1,63 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "React example starter project",
+  "keywords": [
+    "react",
+    "starter"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@types/react": "^17.0.0",
+    "@types/styled-components": "^5.1.4",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-robot": "^0.2.2",
+    "react-scripts": "3.4.3",
+    "react-spring": "8.0.27",
+    "robot3": "^0.2.19",
+    "styled-components": "5.2.1",
+    "xstate": "^4.23.1",
+    "xstate-react": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "ts-jest": "^26.4.2",
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "roots": [
+      "src"
+    ],
+    "testRegex": ".(spec|test).ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "src/(.*)": "<rootDir>/src/$1"
+    }
+  }
+}
