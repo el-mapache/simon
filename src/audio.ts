@@ -1,6 +1,7 @@
 import { playbackSpeed, SquareColors, SquareColorToNote } from './constants';
 
 const BASE_AUDIO_VOLUME = 0.35;
+const WEB_AUDIO_ZERO = 0.00001;
 
 const audioContext = new AudioContext();
 const volumeNode = audioContext.createGain();
@@ -38,7 +39,7 @@ export function playTone(currentSquare: SquareColors) {
     // We ramp down for a smooth fade. We choose a number very close to zero as
     // the web audio api doesnt exactly have the concept of a true zero value for volume
     lastNode.gain?.gain.exponentialRampToValueAtTime(
-      0.00001,
+      WEB_AUDIO_ZERO,
       audioContext.currentTime
     );
     lastNode.tone?.stop(audioContext.currentTime);
@@ -61,14 +62,14 @@ export function playTone(currentSquare: SquareColors) {
   toneNode.frequency.value = toneFreq;
   gainNode.connect(volumeNode);
   gainNode.gain.exponentialRampToValueAtTime(
-    BASE_AUDIO_VOLUME * .9,
+    BASE_AUDIO_VOLUME * 0.9,
     audioContext.currentTime
   );
   const playBackspeedInSec = (playbackSpeed * 2) / 1000;
-  
+
   const stopTime = audioContext.currentTime + playBackspeedInSec;
   toneNode.start();
-  gainNode.gain.exponentialRampToValueAtTime(0.00001, stopTime);
+  gainNode.gain.exponentialRampToValueAtTime(WEB_AUDIO_ZERO, stopTime);
   toneNode.stop(stopTime);
   lastStopTime = stopTime;
 }

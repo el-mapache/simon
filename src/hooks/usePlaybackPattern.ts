@@ -26,6 +26,7 @@ function usePlaybackPattern(pattern: number[]) {
       if (currentIndex.current >= pattern.length - 1) {
         updateGameState({ activeSquare: null });
         awaitUserInput();
+        currentIndex.current = -1;
         return;
       }
 
@@ -42,12 +43,16 @@ function usePlaybackPattern(pattern: number[]) {
       }, 1000);
     }
 
-    dequeue();
+    if (state.paused) {
+      timeout = setTimeout(() => updateGameState({ paused: false }), 1000);
+    } else {
+      dequeue();
+    }
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [pattern, state.gameState, awaitUserInput, updateGameState]);
+  }, [pattern, state.gameState, state.paused, awaitUserInput, updateGameState]);
 }
 
 export default usePlaybackPattern;
