@@ -22,13 +22,13 @@ function Board() {
     return Squares.indexOf(state.activeSquare as SquareColors);
   }
 
-  const handleClick = throttle(onClick, playbackSpeed);
-
-  usePlaybackPattern(state.pattern);
-
   function onAnimationEnd() {
     actions.updateGameState({ activeSquare: null });
   }
+
+  const handleClick = throttle(onClick, playbackSpeed);
+
+  usePlaybackPattern();
 
   return (
     <BoardContainer>

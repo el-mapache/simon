@@ -11,3 +11,16 @@ body,
   height: 100%;
   width: 100%;
 }
+
+.top-left-square {
+  border-top-left-radius: 60px !important;
+}
+.top-right-square {
+  border-top-right-radius: 60px !important;
+}
+.bottom-left-square {
+  border-bottom-left-radius: 60px !important;
+}
+.bottom-right-square {
+  border-bottom-right-radius: 60px !important;
+}

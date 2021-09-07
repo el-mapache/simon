@@ -37,14 +37,14 @@ const GameButton = styled.button<{ disable?: boolean; hide?: boolean }>`
 
 const GameActions: Record<ValueOf<typeof GameStates>, ActionMethods> = {
   [GameStates.Idle]: 'initializePattern',
-  [GameStates.PatternMatchError]: 'patternMatchError',
+  [GameStates.PatternMatchError]: 'initializePattern',
 };
 
-// const areControlsDisabled = (gameState: ValueOf<typeof GameStates>) => {
-//   return (
-//     gameState !== GameStates.Idle && gameState !== GameStates.PatternMatchError
-//   );
-// };
+const controlsEnabled = (gameState: ValueOf<typeof GameStates>) => {
+  return (
+    gameState === GameStates.Idle || gameState === GameStates.PatternMatchError
+  );
+};
 
 function GameControls() {
   const { state, actions } = useGameContext();
@@ -53,11 +53,10 @@ function GameControls() {
   return (
     <GameButton
       onClick={action}
-      disable={false} //areControlsDisabled(state.gameState)}
+      disable={!controlsEnabled(state.gameState)}
       style={{ marginTop: '2rem' }}
     >
       {GameStateMessages[state.gameState]}
-      <p>{state.gameState}</p>
     </GameButton>
   );
 }
