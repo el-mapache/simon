@@ -1,3 +1,4 @@
+import { ValueOf } from 'typeHelpers';
 import { GameMessages, GameStates, Messages } from '../constants';
 import { SimonState } from './state';
 import { AppDispatch } from './types';
@@ -16,6 +17,11 @@ export const ActionTypes = {
   UpdateGame: 'game/UpdateGame',
   PatternMatchError: 'game/PatternMatchError',
   IncrementPattern: 'game/incrementPattern',
+};
+
+export type AppAction = {
+  type: ValueOf<typeof ActionTypes>;
+  payload: Record<string, any>;
 };
 
 // Action creators

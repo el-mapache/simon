@@ -43,7 +43,7 @@ const GameMessage = styled.h2`
  * Grid of 4 squares
  * Number of square to light up starts based on player skill level, 1-4
  * Each round:
- *   * generate a random pattern of squares to light up, with length of patternLength
+ *   * generate a random pattern of squares to light up, with length of initialPatternLength
  *   * light up the number of squares
  *   * wait for user input
  *   * user can click on a square

@@ -1,9 +1,11 @@
 import React, { useMemo, useReducer } from 'react';
-import { AppActionCreators, AppDispatch } from './types';
+import { AppAction, AppActionCreators, AppDispatch } from './types';
 import { buildAppActions } from './actions';
 import initialState from './state';
 import { GameContext } from './context';
 import reducer from './reducer';
+import storageWriter from 'storageWriter';
+import storageMiddleware from './storageMiddleware';
 
 /**
  * Hook that decorates reducer actions with a dispatch function.
@@ -25,7 +27,12 @@ function useActions(
 
 function GameStore({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const actions = useActions(dispatch, buildAppActions);
+  const middleware = storageMiddleware(storageWriter());
+  const middleWareDispatch = (action: AppAction) => {
+    middleware(action, state);
+    dispatch(action);
+  };
+  const actions = useActions(middleWareDispatch, buildAppActions);
 
   const values = useMemo(
     () => ({

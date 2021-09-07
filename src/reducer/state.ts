@@ -5,7 +5,7 @@ export interface SimonState {
   // The square currently being animated
   activeSquare: SquareColors | null;
   // Number of square the player needs to remember
-  patternLength: number;
+  initialPatternLength: number;
   // Count of the times a player has played simon says in a single session
   roundsPlayed: number;
   // The indicies of the squares the player must remember
@@ -29,7 +29,7 @@ const initialState: SimonState = {
   gameMode: 1,
   roundsPlayed: 1,
   pattern: [],
-  patternLength: 2,
+  initialPatternLength: 2,
   userChoices: [],
   gameSpeed: 700,
   skillLevel: 2,

@@ -72,6 +72,7 @@ function usePlaybackPattern() {
     state.pattern,
     state.gameState,
     state.paused,
+    state.gameSpeed,
     awaitUserInput,
     updateGameState,
   ]);

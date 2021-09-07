@@ -22,7 +22,7 @@ export default function reducer(state: SimonState, action: AppAction) {
       };
     }
     case ActionTypes.SetPattern: {
-      const nextPattern = times<number>(state.patternLength, () =>
+      const nextPattern = times<number>(state.initialPatternLength, () =>
         Squares.indexOf(sample(Squares))
       );
 
