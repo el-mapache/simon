@@ -31,7 +31,7 @@ const initialState: SimonState = {
   pattern: [],
   patternLength: 2,
   userChoices: [],
-  gameSpeed: 750,
+  gameSpeed: 700,
   skillLevel: 2,
   paused: false,
 };

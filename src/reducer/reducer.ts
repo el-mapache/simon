@@ -30,6 +30,7 @@ export default function reducer(state: SimonState, action: AppAction) {
         ...state,
         gameState: GameStates.MakePattern,
         pattern: nextPattern,
+        userChoices: [],
       };
     }
     case ActionTypes.IncrementPattern: {
@@ -49,7 +50,8 @@ export default function reducer(state: SimonState, action: AppAction) {
       // or if the user is attempting some kind of rapid-fire button pushing
       if (
         GameHelpers.isPlayback(state.gameState) ||
-        state.userChoices.length === state.pattern.length
+        (state.pattern.length &&
+          state.userChoices.length === state.pattern.length)
       ) {
         return state;
       }

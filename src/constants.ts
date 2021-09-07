@@ -100,6 +100,7 @@ export const GameStateMessages = {
   [GameStates.Idle]: GameControlsMessages[GameMessages.StartButton],
   [GameStates.MakePattern]: GameControlsMessages[GameStates.MakePattern],
   [GameStates.PlayBackPattern]: GameControlsMessages[GameMessages.PlayingBack],
+  [GameStates.Input]: GameControlsMessages[GameMessages.Input],
   [GameStates.PatternMatchError]: GameControlsMessages[GameMessages.TryAgain],
 };
 

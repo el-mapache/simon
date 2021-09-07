@@ -5,7 +5,7 @@ function isPureObject(maybeObj: any) {
 }
 
 function times<T>(count: number, iterator: () => any): T[] {
-  return new Array(count).map(iterator);
+  return new Array(count).fill(undefined).map(iterator);
 }
 
 function sample(list: any[]) {

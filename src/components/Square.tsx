@@ -19,6 +19,20 @@ const Square = styled.div<{ bg?: string }>`
   }
 `;
 
+const SQUARE_BORDER_RADII = [
+  'top-left-square',
+  'top-right-square',
+  'bottom-left-square',
+  'bottom-right-square',
+];
+
+/**
+ * Most of these properties are self-explanatory, but the following two may not
+ * be immediately obvious.
+ *
+ * @active - Is the square being animated?
+ * @bg - The background color of the square
+ */
 interface Props {
   active: number;
   bg: string;
@@ -41,7 +55,11 @@ function SquareComponent(props: Props) {
       shouldAnimate={active === index}
       onDone={props.onAnimateEnd}
     >
-      <Square {...rest} onMouseUp={handleClick} />
+      <Square
+        {...rest}
+        className={SQUARE_BORDER_RADII[index]}
+        onMouseUp={handleClick}
+      />
     </OpacityAnimator>
   );
 }
