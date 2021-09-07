@@ -5,6 +5,7 @@ import useGameContext from '../reducer/context';
 import { theme } from '../styles/theme';
 import Board from './Board';
 import GameControls from './GameControls';
+import useRules from 'hooks/useRules';
 
 const AppContainer = styled.div`
   background: ${({ theme }) => theme.main.backgound};
@@ -59,6 +60,7 @@ const GameMessage = styled.h2`
  */
 export default function App() {
   const { state } = useGameContext();
+  useRules();
 
   return (
     <ThemeProvider theme={theme}>

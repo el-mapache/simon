@@ -40,6 +40,12 @@ const GameActions: Record<ValueOf<typeof GameStates>, ActionMethods> = {
   [GameStates.PatternMatchError]: 'patternMatchError',
 };
 
+// const areControlsDisabled = (gameState: ValueOf<typeof GameStates>) => {
+//   return (
+//     gameState !== GameStates.Idle && gameState !== GameStates.PatternMatchError
+//   );
+// };
+
 function GameControls() {
   const { state, actions } = useGameContext();
   const action = actions[GameActions[state.gameState]];
@@ -47,7 +53,7 @@ function GameControls() {
   return (
     <GameButton
       onClick={action}
-      disable={state.gameState !== GameStates.Idle}
+      disable={false} //areControlsDisabled(state.gameState)}
       style={{ marginTop: '2rem' }}
     >
       {GameStateMessages[state.gameState]}

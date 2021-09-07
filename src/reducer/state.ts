@@ -19,6 +19,7 @@ export interface SimonState {
   gameMode: number;
   // Determines the starting pattern length and game speed
   skillLevel: number;
+  paused: boolean;
 }
 
 const initialState: SimonState = {
@@ -32,6 +33,7 @@ const initialState: SimonState = {
   userChoices: [],
   gameSpeed: 750,
   skillLevel: 2,
+  paused: false,
 };
 
 export default initialState;

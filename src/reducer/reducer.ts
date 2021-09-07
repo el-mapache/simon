@@ -39,12 +39,18 @@ export default function reducer(state: SimonState, action: AppAction) {
       return {
         ...state,
         roundsPlayed: state.roundsPlayed++,
+        userChoices: [],
+        paused: true,
         pattern: nextPattern,
       };
     }
     case ActionTypes.UpdateUserInput: {
-      // Ignore user input if the game is in playback mode
-      if (GameHelpers.isPlayback(state.gameState)) {
+      // Ignore user input if the game is in playback mode,
+      // or if the user is attempting some kind of rapid-fire button pushing
+      if (
+        GameHelpers.isPlayback(state.gameState) ||
+        state.userChoices.length === state.pattern.length
+      ) {
         return state;
       }
 
