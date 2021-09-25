@@ -42,7 +42,6 @@ function GameStore({ children }: { children: React.ReactNode }) {
     [state, actions]
   );
 
-  console.log(state);
   return <GameContext.Provider value={values}>{children}</GameContext.Provider>;
 }
 
