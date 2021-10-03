@@ -47,7 +47,7 @@ function usePlaybackPattern() {
         activeSquare: nextTone,
         gameState: GameStates.PlayBackPattern,
       });
-      playTone(nextTone);
+      playTone(nextTone, state.gameSpeed);
 
       timeout = setTimeout(() => {
         dequeue();

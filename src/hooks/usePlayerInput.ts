@@ -18,7 +18,7 @@ function usePlayerInput() {
 
     if (state.activeSquare !== Squares[squareIndex]) {
       actions.updateGameState({ activeSquare: Squares[squareIndex] });
-      playTone(Squares[squareIndex]);
+      playTone(Squares[squareIndex], state.gameSpeed);
     }
   }
 

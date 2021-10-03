@@ -1,16 +1,16 @@
-import { PLAYBACK_SPEED, SquareColors, SquareColorToNote } from './constants';
+import { SquareColors, SquareColorToNote } from './constants';
 
-const BASE_AUDIO_VOLUME = 0.35;
+const BASE_AUDIO_VOLUME = 0.25;
 const WEB_AUDIO_ZERO = 0.00001;
 
 const audioContext = new AudioContext();
 const volumeNode = audioContext.createGain();
 const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.value = -12;
-compressor.knee.value = 10;
+compressor.threshold.value = -25;
+compressor.knee.value = 1;
 compressor.ratio.value = 16;
 compressor.attack.value = 0;
-compressor.release.value = 1;
+compressor.release.value = 1.5;
 
 volumeNode.gain.value = BASE_AUDIO_VOLUME;
 
@@ -36,13 +36,12 @@ let lastNode: { tone: OscillatorNode | null; gain: GainNode | null } = {
   gain: null,
 };
 
-export function playTone(currentSquare: SquareColors) {
+export function playTone(currentSquare: SquareColors, speed: number) {
   const isNotePlaying = audioContext.currentTime < lastStopTime;
+  const PLAYBACK_SPEED_IN_SECONDS = (speed * 2) / 1000;
 
   // The user has clicked a square while a note is playing, so clear it
   if (isNotePlaying) {
-    // We ramp down for a smooth fade. We choose a number very close to zero as
-    // the web audio api doesnt exactly have the concept of a true zero value for volume
     lastNode.gain?.gain.exponentialRampToValueAtTime(
       WEB_AUDIO_ZERO,
       audioContext.currentTime
@@ -56,6 +55,7 @@ export function playTone(currentSquare: SquareColors) {
   const toneNode = audioContext.createOscillator();
   const gainNode = audioContext.createGain();
 
+  gainNode.gain.value = WEB_AUDIO_ZERO;
   toneNode.connect(gainNode);
   lastNode = {
     tone: toneNode,
@@ -66,14 +66,15 @@ export function playTone(currentSquare: SquareColors) {
 
   toneNode.frequency.value = toneFreq;
   gainNode.connect(volumeNode);
-  gainNode.gain.exponentialRampToValueAtTime(
+
+  const stopTime = audioContext.currentTime + PLAYBACK_SPEED_IN_SECONDS;
+  gainNode.gain.setValueAtTime(
     BASE_AUDIO_VOLUME * 0.9,
     audioContext.currentTime
   );
-  const PLAYBACK_SPEEDInSec = (PLAYBACK_SPEED * 2) / 1000;
 
-  const stopTime = audioContext.currentTime + PLAYBACK_SPEEDInSec;
   toneNode.start();
+
   gainNode.gain.exponentialRampToValueAtTime(WEB_AUDIO_ZERO, stopTime);
   toneNode.stop(stopTime);
   lastStopTime = stopTime;
