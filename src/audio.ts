@@ -1,4 +1,4 @@
-import { playbackSpeed, SquareColors, SquareColorToNote } from './constants';
+import { PLAYBACK_SPEED, SquareColors, SquareColorToNote } from './constants';
 
 const BASE_AUDIO_VOLUME = 0.35;
 const WEB_AUDIO_ZERO = 0.00001;
@@ -17,9 +17,14 @@ volumeNode.gain.value = BASE_AUDIO_VOLUME;
 volumeNode.connect(compressor);
 compressor.connect(audioContext.destination);
 
-const imag = new Float32Array([0, 0, 1, 0, 1, 0, 0, 0]); // sine
-const real = new Float32Array(imag.length); // cos
-const customWave = audioContext.createPeriodicWave(real, imag); // cos,sine
+function createSineTone(audioContext: AudioContext) {
+  const imag = new Float32Array([0, 0, 1, 0, 1, 0, 0, 0]); // sin
+  const real = new Float32Array(imag.length); // cos
+
+  return audioContext.createPeriodicWave(real, imag); // cos,sin
+}
+
+const customWaveform = createSineTone(audioContext);
 
 /**
  * Pointer to when the last played note stopped playing. used when determine
@@ -57,7 +62,7 @@ export function playTone(currentSquare: SquareColors) {
     gain: gainNode,
   };
 
-  toneNode.setPeriodicWave(customWave);
+  toneNode.setPeriodicWave(customWaveform);
 
   toneNode.frequency.value = toneFreq;
   gainNode.connect(volumeNode);
@@ -65,9 +70,9 @@ export function playTone(currentSquare: SquareColors) {
     BASE_AUDIO_VOLUME * 0.9,
     audioContext.currentTime
   );
-  const playBackspeedInSec = (playbackSpeed * 2) / 1000;
+  const PLAYBACK_SPEEDInSec = (PLAYBACK_SPEED * 2) / 1000;
 
-  const stopTime = audioContext.currentTime + playBackspeedInSec;
+  const stopTime = audioContext.currentTime + PLAYBACK_SPEEDInSec;
   toneNode.start();
   gainNode.gain.exponentialRampToValueAtTime(WEB_AUDIO_ZERO, stopTime);
   toneNode.stop(stopTime);

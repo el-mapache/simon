@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ActionMethods, GameStateMessages, GameStates } from '../constants';
+import { GameStateMessages, GameStates } from '../constants';
 import useGameContext from '../reducer/context';
 import { ValueOf } from '../typeHelpers';
 
@@ -35,11 +35,6 @@ const GameButton = styled.button<{ disable?: boolean; hide?: boolean }>`
   }
 `;
 
-const GameActions: Record<ValueOf<typeof GameStates>, ActionMethods> = {
-  [GameStates.Idle]: 'initializePattern',
-  [GameStates.PatternMatchError]: 'initializePattern',
-};
-
 const controlsEnabled = (gameState: ValueOf<typeof GameStates>) => {
   return (
     gameState === GameStates.Idle || gameState === GameStates.PatternMatchError
@@ -48,11 +43,21 @@ const controlsEnabled = (gameState: ValueOf<typeof GameStates>) => {
 
 function GameControls() {
   const { state, actions } = useGameContext();
-  const action = actions[GameActions[state.gameState]];
+  const action = (() => {
+    switch (state.gameState) {
+      case GameStates.Idle:
+      case GameStates.PatternMatchError: {
+        return actions.initializePattern;
+      }
+      default: {
+        return () => ({});
+      }
+    }
+  })();
 
   return (
     <GameButton
-      onClick={action}
+      onClick={() => action()}
       disable={!controlsEnabled(state.gameState)}
       style={{ marginTop: '2rem' }}
     >

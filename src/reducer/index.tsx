@@ -28,6 +28,9 @@ function useActions(
 function GameStore({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const middleware = storageMiddleware(storageWriter());
+
+  // Inserts middleware functions before an action dispatch dispatch.
+  // All supplied middleware will be executed before the action is dispatched.
   const middleWareDispatch = (action: AppAction) => {
     middleware(action, state);
     dispatch(action);

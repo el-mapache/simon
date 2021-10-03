@@ -104,4 +104,4 @@ export const GameStateMessages = {
   [GameStates.PatternMatchError]: GameControlsMessages[GameMessages.TryAgain],
 };
 
-export const playbackSpeed = 500;
+export const PLAYBACK_SPEED = 500;

@@ -24,3 +24,7 @@ body,
 .bottom-right-square {
   border-bottom-right-radius: 60px !important;
 }
+
+.mb-1 {
+  margin-bottom: 1rem;
+}

@@ -6,6 +6,7 @@ import { theme } from '../styles/theme';
 import Board from './Board';
 import GameControls from './GameControls';
 import useRules from 'hooks/useRules';
+import GameOptions from './Options';
 
 const AppContainer = styled.div`
   background: ${({ theme }) => theme.main.backgound};
@@ -22,6 +23,7 @@ const Container = styled.div`
 const SimonContainer = styled(Container)`
   text-align: center;
   padding-top: 2rem;
+  width: 480px;
 `;
 
 const GameHeader = styled.h1`
@@ -68,6 +70,7 @@ export default function App() {
         <SimonContainer>
           <GameHeader>Simon Says</GameHeader>
           <GameControls />
+          <GameOptions />
           <Board />
           <GameMessage>{state.gameMessage}</GameMessage>
         </SimonContainer>

@@ -5,7 +5,7 @@ import { Column, Row } from '../styles/Style';
 import Square from './Square';
 import useGameContext from '../reducer/context';
 import { throttle } from '../utils';
-import { playbackSpeed, SquareColors, Squares } from '../constants';
+import { SquareColors, Squares } from '../constants';
 import usePlaybackPattern from '../hooks/usePlaybackPattern';
 import usePlayerInput from '../hooks/usePlayerInput';
 
@@ -26,7 +26,7 @@ function Board() {
     actions.updateGameState({ activeSquare: null });
   }
 
-  const handleClick = throttle(onClick, playbackSpeed);
+  const handleClick = throttle(onClick, state.gameSpeed);
 
   usePlaybackPattern();
 

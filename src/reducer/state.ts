@@ -1,4 +1,9 @@
-import { GameStates, Messages, SquareColors } from '../constants';
+import {
+  GameStates,
+  Messages,
+  PLAYBACK_SPEED,
+  SquareColors,
+} from '../constants';
 import { ValueOf } from '../typeHelpers';
 
 export interface SimonState {
@@ -17,8 +22,6 @@ export interface SimonState {
   gameSpeed: number;
   // Solo or two player mode. 1 for solo, 2 for 2-player
   gameMode: number;
-  // Determines the starting pattern length and game speed
-  skillLevel: number;
   paused: boolean;
 }
 
@@ -31,8 +34,7 @@ const initialState: SimonState = {
   pattern: [],
   initialPatternLength: 2,
   userChoices: [],
-  gameSpeed: 700,
-  skillLevel: 2,
+  gameSpeed: PLAYBACK_SPEED,
   paused: false,
 };
 

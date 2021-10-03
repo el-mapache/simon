@@ -1,6 +1,5 @@
 import { ValueOf } from 'typeHelpers';
 import { GameMessages, GameStates, Messages } from '../constants';
-import { SimonState } from './state';
 import { AppDispatch } from './types';
 
 export const ActionTypes = {
@@ -95,7 +94,7 @@ export const buildAppActions = (dispatch: AppDispatch) => {
         },
       });
     },
-    updateGameState(update: Record<keyof SimonState, any>) {
+    updateGameState(update: Record<string, any>) {
       dispatch({
         type: ActionTypes.UpdateGame,
         payload: {
